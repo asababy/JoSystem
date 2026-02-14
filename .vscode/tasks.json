@@ -1,0 +1,46 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "restore",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "restore",
+        "${workspaceFolder}/FileServerWPF.csproj"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "build Debug",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/FileServerWPF.csproj",
+        "-c",
+        "Debug"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": ["restore"],
+      "problemMatcher": ["$msCompile"]
+    },
+    {
+      "label": "build Release",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/FileServerWPF.csproj",
+        "-c",
+        "Release"
+      ],
+      "group": "build",
+      "dependsOn": ["restore"],
+      "problemMatcher": ["$msCompile"]
+    }
+  ]
+}

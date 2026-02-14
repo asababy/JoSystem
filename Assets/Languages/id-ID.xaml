@@ -1,0 +1,132 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <sys:String x:Key="Lang.Sidebar.Home">Ikhtisar</sys:String>
+    <sys:String x:Key="Lang.Sidebar.Logs">Log Sistem</sys:String>
+    <sys:String x:Key="Lang.Sidebar.Settings">Pengaturan</sys:String>
+    <sys:String x:Key="Lang.Sidebar.Roles">Manajemen Peran</sys:String>
+    <sys:String x:Key="Lang.Sidebar.Title">Manajemen Konsol</sys:String>
+    
+    <sys:String x:Key="Lang.Home.ServiceStatus">Status</sys:String>
+    <sys:String x:Key="Lang.Home.ServiceAddress">Alamat</sys:String>
+    <sys:String x:Key="Lang.Home.WebRoot">Root Web</sys:String>
+    <sys:String x:Key="Lang.Home.Browse">Jelajahi</sys:String>
+    <sys:String x:Key="Lang.Home.Port">Port</sys:String>
+    <sys:String x:Key="Lang.Home.Start">Mulai Layanan</sys:String>
+    <sys:String x:Key="Lang.Home.Stop">Hentikan Layanan</sys:String>
+    <sys:String x:Key="Lang.Home.Running">Berjalan</sys:String>
+    <sys:String x:Key="Lang.Home.Stopped">Berhenti</sys:String>
+    <sys:String x:Key="Lang.Home.Copy">Salin</sys:String>
+    <sys:String x:Key="Lang.Home.Copied">Disalin</sys:String>
+
+    <sys:String x:Key="Lang.Logs.Title">Kueri Log</sys:String>
+    <sys:String x:Key="Lang.Logs.SearchPlaceholder">Kata kunci...</sys:String>
+    <sys:String x:Key="Lang.Logs.Level">Level Log</sys:String>
+    <sys:String x:Key="Lang.Logs.Source">Sumber Log</sys:String>
+    <sys:String x:Key="Lang.Logs.SelectDate">Pilih Tanggal</sys:String>
+    <sys:String x:Key="Lang.Logs.Search">Cari</sys:String>
+    <sys:String x:Key="Lang.Logs.Time">Waktu</sys:String>
+    <sys:String x:Key="Lang.Logs.Content">Konten</sys:String>
+
+    <sys:String x:Key="Lang.Settings.General">Umum</sys:String>
+    <sys:String x:Key="Lang.Settings.Network">Jaringan</sys:String>
+    <sys:String x:Key="Lang.Settings.Security">Keamanan</sys:String>
+    <sys:String x:Key="Lang.Settings.Save">Simpan Konfigurasi</sys:String>
+    <sys:String x:Key="Lang.Settings.Language">Bahasa</sys:String>
+    <sys:String x:Key="Lang.Settings.ViewCaching">Nonaktifkan Cache Tampilan</sys:String>
+    <sys:String x:Key="Lang.Settings.RootDirectory">Direktori Akar Berkas</sys:String>
+    <sys:String x:Key="Lang.Settings.HttpPort">Port HTTP</sys:String>
+    <sys:String x:Key="Lang.Settings.HttpsPort">Port HTTPS</sys:String>
+    <sys:String x:Key="Lang.Settings.EnableHttps">Aktifkan HTTPS</sys:String>
+    <sys:String x:Key="Lang.Settings.Saved">Berhasil Disimpan</sys:String>
+    <sys:String x:Key="Lang.Settings.RestoreDefaults">Pulihkan Default</sys:String>
+    <sys:String x:Key="Lang.Settings.RunAsService">Jalankan sebagai Layanan</sys:String>
+    <sys:String x:Key="Lang.Settings.RunAsServiceToolTip">Memerlukan hak administrator untuk menginstal/menghapus layanan</sys:String>
+    
+    <sys:String x:Key="Lang.Config.UnCachedViews">Tampilan Tidak Di-cache (Centang untuk Nonaktifkan Cache)</sys:String>
+    <sys:String x:Key="Lang.Settings.ConfigKey">Kunci</sys:String>
+    <sys:String x:Key="Lang.Settings.Description">Deskripsi</sys:String>
+    <sys:String x:Key="Lang.Settings.Value">Nilai</sys:String>
+    <sys:String x:Key="Lang.Settings.Reload">Muat Ulang</sys:String>
+    <sys:String x:Key="Lang.Settings.UserManagement">Manajemen Pengguna</sys:String>
+    <sys:String x:Key="Lang.Settings.Username">Nama Pengguna</sys:String>
+    <sys:String x:Key="Lang.Settings.Password">Kata Sandi</sys:String>
+    <sys:String x:Key="Lang.Settings.AddUser">Tambah Pengguna</sys:String>
+    <sys:String x:Key="Lang.Settings.UpdateUser">Perbarui Pengguna</sys:String>
+    <sys:String x:Key="Lang.Settings.Cancel">Batal</sys:String>
+    <sys:String x:Key="Lang.Settings.Delete">Hapus</sys:String>
+    <sys:String x:Key="Lang.Settings.Action">Aksi</sys:String>
+    <sys:String x:Key="Lang.Settings.Role">Peran</sys:String>
+    <sys:String x:Key="Lang.Settings.Roles">Peran</sys:String>
+    <sys:String x:Key="Lang.Settings.RoleManagement">Manajemen Peran</sys:String>
+    <sys:String x:Key="Lang.Settings.RoleName">Nama Peran</sys:String>
+    <sys:String x:Key="Lang.Settings.RoleDescription">Deskripsi</sys:String>
+    <sys:String x:Key="Lang.Settings.AddRole">Tambah Peran</sys:String>
+    <sys:String x:Key="Lang.Settings.UpdateRole">Perbarui Peran</sys:String>
+
+    <sys:String x:Key="Lang.Msg.RoleNameEmpty">Nama peran tidak boleh kosong</sys:String>
+    <sys:String x:Key="Lang.Msg.RoleExists">Peran sudah ada</sys:String>
+    <sys:String x:Key="Lang.Msg.RoleCreated">Peran berhasil dibuat</sys:String>
+    <sys:String x:Key="Lang.Msg.RoleUpdated">Peran berhasil diperbarui</sys:String>
+    <sys:String x:Key="Lang.Msg.DeleteRoleConfirm">Apakah Anda yakin ingin menghapus peran ini?</sys:String>
+    <sys:String x:Key="Lang.Msg.UserUpdated">Pengguna {0} berhasil diperbarui</sys:String>
+    <sys:String x:Key="Lang.Settings.IsAdmin">Admin</sys:String>
+    <sys:String x:Key="Lang.Home.Title">Server Berkas</sys:String>
+    <sys:String x:Key="Lang.Home.Subtitle">Kelola dan jelajahi sumber daya berkas lokal</sys:String>
+    <sys:String x:Key="Lang.Home.Up">Naik</sys:String>
+    <sys:String x:Key="Lang.Home.Reset">Dir Default</sys:String>
+    <sys:String x:Key="Lang.Home.OpenDir">Buka Dir</sys:String>
+    <sys:String x:Key="Lang.Home.Name">Nama</sys:String>
+    <sys:String x:Key="Lang.Home.Date">Tanggal Diubah</sys:String>
+    <sys:String x:Key="Lang.Home.Type">Tipe</sys:String>
+    <sys:String x:Key="Lang.Home.Size">Ukuran</sys:String>
+
+    <sys:String x:Key="Lang.Logs.Subtitle">Lihat log sistem dan informasi kesalahan</sys:String>
+    <sys:String x:Key="Lang.Logs.SearchTooltip">Masukkan kata kunci untuk mencari log</sys:String>
+    <sys:String x:Key="Lang.Logs.Query">Kueri</sys:String>
+    <sys:String x:Key="Lang.Logs.OpenDir">Buka Folder</sys:String>
+    <sys:String x:Key="Lang.Logs.OpenDirTooltip">Buka folder log</sys:String>
+    <sys:String x:Key="Lang.Logs.Clear">Bersihkan</sys:String>
+    <sys:String x:Key="Lang.Logs.ClearTooltip">Bersihkan semua log</sys:String>
+    
+    <sys:String x:Key="Lang.Logs.FirstPage">Awal</sys:String>
+    <sys:String x:Key="Lang.Logs.LastPage">Akhir</sys:String>
+    <sys:String x:Key="Lang.Logs.PrevPage">Sebelumnya</sys:String>
+    <sys:String x:Key="Lang.Logs.NextPage">Berikutnya</sys:String>
+    <sys:String x:Key="Lang.Logs.JumpTo">Lompat ke</sys:String>
+    <sys:String x:Key="Lang.Logs.Total">Total</sys:String>
+    
+    <sys:String x:Key="Lang.Msg.LoadFail">Gagal memuat pengaturan</sys:String>
+    <sys:String x:Key="Lang.Msg.UserPassEmpty">Nama pengguna dan kata sandi tidak boleh kosong</sys:String>
+    <sys:String x:Key="Lang.Msg.UserExists">Nama pengguna sudah ada</sys:String>
+    <sys:String x:Key="Lang.Msg.UserCreated">Pengguna {0} berhasil dibuat</sys:String>
+    <sys:String x:Key="Lang.Msg.AddUserFail">Gagal menambah pengguna</sys:String>
+    <sys:String x:Key="Lang.Msg.EnterNewPass">Silakan masukkan kata sandi baru</sys:String>
+    <sys:String x:Key="Lang.Msg.PassUpdated">Kata sandi pengguna {0} diperbarui</sys:String>
+    <sys:String x:Key="Lang.Msg.UpdateFail">Pembaruan gagal</sys:String>
+    <sys:String x:Key="Lang.Msg.DeleteAdminFail">Tidak dapat menghapus pengguna admin</sys:String>
+    <sys:String x:Key="Lang.Msg.DeleteUserConfirm">Apakah Anda yakin ingin menghapus pengguna {0}?</sys:String>
+    <sys:String x:Key="Lang.Msg.DeleteFail">Penghapusan gagal</sys:String>
+    <sys:String x:Key="Lang.Msg.SaveFail">Gagal menyimpan konfigurasi</sys:String>
+    <sys:String x:Key="Lang.Msg.SaveSuccess">Konfigurasi disimpan dan diterapkan</sys:String>
+    <sys:String x:Key="Lang.Msg.Confirm">Konfirmasi</sys:String>
+
+    <sys:String x:Key="Lang.Config.Language">Bahasa Antarmuka</sys:String>
+    <sys:String x:Key="Lang.Config.RootDirectory">Direktori Root Berkas</sys:String>
+    <sys:String x:Key="Lang.Config.LogDirectory">Direktori Log</sys:String>
+    <sys:String x:Key="Lang.Config.MaxUploadSizeGB">Ukuran Unggah Maks (GB)</sys:String>
+    <sys:String x:Key="Lang.Config.MaxDownloadSizeGB">Ukuran Unduh Maks (GB)</sys:String>
+    <sys:String x:Key="Lang.Config.LogPageSize">Ukuran Halaman Log</sys:String>
+    <sys:String x:Key="Lang.Config.MinLogLevel">Level Log Min (0=Info, 1=Peringatan, 2=Error)</sys:String>
+    <sys:String x:Key="Lang.Config.EnableHttps">Aktifkan HTTPS</sys:String>
+    <sys:String x:Key="Lang.Config.HttpPort">Port HTTP</sys:String>
+    <sys:String x:Key="Lang.Config.HttpsPort">Port HTTPS</sys:String>
+    <sys:String x:Key="Lang.Config.RunAsService">Jalankan sebagai Layanan</sys:String>
+    <sys:String x:Key="Lang.Config.RunAsServiceTooltip">Setelah diaktifkan, program akan berjalan di latar belakang sebagai layanan Windows. Memerlukan hak administrator.</sys:String>
+    <sys:String x:Key="Lang.Config.BlacklistExtensions">Ekstensi Daftar Hitam (pisah |)</sys:String>
+    <sys:String x:Key="Lang.Config.ProtectedApiPaths">API Terlindungi (pisah |)</sys:String>
+    <sys:String x:Key="Lang.Config.EnableSwagger">Aktifkan dokumentasi Swagger (disarankan hanya untuk dev/intranet)</sys:String>
+    <sys:String x:Key="Lang.Config.SwaggerIpWhitelist">Daftar putih IP Swagger (pisah ;, dukung CIDR/range/wildcard, mis. 10.1.0.1-10.2.0.23, 10.1.*.5)</sys:String>
+
+    <sys:String x:Key="Lang.Title">Server Berkas</sys:String>
+</ResourceDictionary>

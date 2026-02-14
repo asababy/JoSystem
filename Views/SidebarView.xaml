@@ -1,0 +1,85 @@
+<UserControl x:Class="JoSystem.Views.SidebarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:JoSystem.Views"
+             xmlns:vm="clr-namespace:JoSystem.ViewModels"
+             xmlns:conv="clr-namespace:JoSystem.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="240"
+             Style="{StaticResource SidebarStyle}">
+    
+    <UserControl.Resources>
+        <conv:EqualityToBooleanConverter x:Key="EqualityToBooleanConverter"/>
+    </UserControl.Resources>
+
+    <Border Background="#1A1A1A">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header Section -->
+            <StackPanel Grid.Row="0" Margin="0,20,0,20">
+                <Grid>
+                    <ToggleButton Command="{Binding ToggleSidebarCommand}"
+                                  HorizontalAlignment="Right" Margin="0,0,10,0"
+                                  Style="{StaticResource SidebarToggleButtonStyle}"/>
+                </Grid>
+                
+                <StackPanel x:Name="LogoPanel" Style="{StaticResource SidebarLogoPanelStyle}">
+                    <Border Width="72" Height="72" Margin="0,0,0,10">
+                        <Border.Effect>
+                            <DropShadowEffect Color="Black" Direction="270" ShadowDepth="4" BlurRadius="12" Opacity="0.3"/>
+                        </Border.Effect>
+                        <Image Source="/Assets/logo.ico" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <TextBlock Text="FileServer" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <TextBlock Text="{DynamicResource Lang.Sidebar.Title}" Foreground="#888" FontSize="12" HorizontalAlignment="Center" Margin="0,2,0,0"/>
+                </StackPanel>
+                
+                <!-- Logo for Collapsed State -->
+                 <Border x:Name="SmallLogo" Style="{StaticResource SidebarSmallLogoStyle}">
+                    <Image Source="/Assets/logo.ico" Width="32" Height="32" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+
+            </StackPanel>
+
+            <!-- Navigation Items -->
+            <StackPanel Grid.Row="1">
+                <RadioButton Content="{DynamicResource Lang.Sidebar.Home}" Tag="&#xE80F;" Style="{StaticResource NavButtonStyle}" 
+                             Command="{Binding NavigateCommand}" CommandParameter="Home"
+                             IsChecked="{Binding ActiveViewName, Converter={StaticResource EqualityToBooleanConverter}, ConverterParameter=Home, Mode=OneWay}"/>
+                
+                <RadioButton Content="{DynamicResource Lang.Sidebar.Logs}" Tag="&#xE9F9;" Style="{StaticResource NavButtonStyle}"
+                             Command="{Binding NavigateCommand}" CommandParameter="Logs"
+                             IsChecked="{Binding ActiveViewName, Converter={StaticResource EqualityToBooleanConverter}, ConverterParameter=Logs, Mode=OneWay}"/>
+                
+                <RadioButton Content="{DynamicResource Lang.Settings.UserManagement}" Tag="&#xE77B;" Style="{StaticResource NavButtonStyle}"
+                             Command="{Binding NavigateCommand}" CommandParameter="Users"
+                             IsChecked="{Binding ActiveViewName, Converter={StaticResource EqualityToBooleanConverter}, ConverterParameter=Users, Mode=OneWay}"/>
+
+                <!-- Role Management Hidden
+                <RadioButton Content="{DynamicResource Lang.Sidebar.Roles}" Tag="&#xE716;" Style="{StaticResource NavButtonStyle}"
+                             Command="{Binding NavigateCommand}" CommandParameter="Roles"
+                             IsChecked="{Binding ActiveViewName, Converter={StaticResource EqualityToBooleanConverter}, ConverterParameter=Roles, Mode=OneWay}"/>
+                -->
+
+                <RadioButton Content="{DynamicResource Lang.Sidebar.Settings}" Tag="&#xE713;" Style="{StaticResource NavButtonStyle}"
+                             Command="{Binding NavigateCommand}" CommandParameter="Settings"
+                             IsChecked="{Binding ActiveViewName, Converter={StaticResource EqualityToBooleanConverter}, ConverterParameter=Settings, Mode=OneWay}"/>
+            </StackPanel>
+
+            <!-- Footer -->
+            <Border Grid.Row="2" x:Name="AppFooter" Style="{StaticResource SidebarFooterStyle}">
+                <StackPanel Opacity="0.4">
+                    <TextBlock Text="Version 1.2.0" Foreground="White" FontSize="10" HorizontalAlignment="Center"/>
+                    <TextBlock Text="© 2026 Joel Mapa" Foreground="White" FontSize="9" HorizontalAlignment="Center" Margin="0,2,0,0"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

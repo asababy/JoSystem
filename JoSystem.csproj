@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net9.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<AssemblyName>JoSystem</AssemblyName>
+		<RootNamespace>JoSystem</RootNamespace>
+		<ApplicationIcon>Assets\app.ico</ApplicationIcon>
+
+		<!-- 程序 EXE 的文件属性（文件版本信息） -->
+		<FileVersion>1.2.0</FileVersion>
+		<AssemblyVersion>1.0.0.1</AssemblyVersion>
+		<Version>1.2</Version>
+		<AssemblyTitle>文件服务程序</AssemblyTitle>
+		<Product>文件服务器</Product>
+		<Company>MAPA</Company>
+		<Copyright>Joel Wang</Copyright>
+		<Authors>Joel</Authors>
+		<StartupObject>JoSystem.Program</StartupObject>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="WebPages\**\*.*" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Assets\app.ico" />
+	  <None Remove="Assets\logo.ico" />
+	  <None Remove="Assets\mapa.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Assets\app.ico">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Assets\logo.ico">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
+	  <PackageReference Include="System.ServiceProcess.ServiceController" Version="9.0.0" />
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+	</ItemGroup>
+
+</Project>

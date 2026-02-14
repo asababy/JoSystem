@@ -1,0 +1,114 @@
+<UserControl x:Class="JoSystem.Views.Core.UserManagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:JoSystem.Views.Core"
+             xmlns:vm="clr-namespace:JoSystem.ViewModels.Core"
+             xmlns:conv="clr-namespace:JoSystem.Converters"
+             xmlns:jo="clr-namespace:JoSystem.Components.JoGrid"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800"
+             Background="{StaticResource BackgroundBrush}"
+             FontFamily="{StaticResource GlobalFontFamily}">
+
+    <UserControl.DataContext>
+        <vm:UserManagementViewModel />
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <conv:InvertBoolConverter x:Key="InvertBoolConverter"/>
+        <conv:InvertedBoolToVisibilityConverter x:Key="InvertedBoolToVisibilityConverter"/>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </UserControl.Resources>
+
+    <Grid Margin="30">
+        <Border Style="{StaticResource CardStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Header -->
+                <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="0,0,0,25">
+                    <TextBlock Text="&#xE77B;" FontFamily="Segoe MDL2 Assets" FontSize="20" VerticalAlignment="Center" Foreground="{StaticResource PrimaryBrush}" Margin="0,0,10,0"/>
+                    <TextBlock Text="{DynamicResource Lang.Settings.UserManagement}" Style="{StaticResource HeaderTextStyle}" Margin="0"/>
+                </StackPanel>
+
+                <!-- Left: Form -->
+                <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
+                    <TextBlock Text="{DynamicResource Lang.Settings.Username}" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,5"/>
+                    <TextBox Text="{Binding UsernameInput, UpdateSourceTrigger=PropertyChanged}" Height="{StaticResource StandardControlHeight}" IsEnabled="{Binding IsEditMode, Converter={StaticResource InvertBoolConverter}}"/>
+                    
+                    <TextBlock Text="{DynamicResource Lang.Settings.Password}" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,15,0,5"/>
+                    <TextBox Text="{Binding PasswordInput, UpdateSourceTrigger=PropertyChanged}" Height="{StaticResource StandardControlHeight}"/>
+                    
+                    <!-- Role Assignment Removed -->
+
+                    <Grid Margin="0,25,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!-- Create Mode Buttons -->
+                        <Button Grid.Column="0" Command="{Binding AddUserCommand}" Content="{DynamicResource Lang.Settings.AddUser}" 
+                                Style="{StaticResource PrimaryButtonStyle}" Height="{StaticResource StandardControlHeight}" Margin="0,0,5,0"
+                                Visibility="{Binding IsEditMode, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+                        
+                        <!-- Edit Mode Buttons -->
+                        <Button Grid.Column="0" Command="{Binding UpdateUserCommand}" Content="{DynamicResource Lang.Settings.UpdateUser}" 
+                                Style="{StaticResource PrimaryButtonStyle}" Height="{StaticResource StandardControlHeight}" Margin="0,0,5,0"
+                                Visibility="{Binding IsEditMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                
+                        <Button Grid.Column="1" Command="{Binding CancelEditCommand}" Content="{DynamicResource Lang.Settings.Cancel}" 
+                                Style="{StaticResource SecondaryButtonStyle}" Height="{StaticResource StandardControlHeight}" Margin="5,0,0,0"
+                                Visibility="{Binding IsEditMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    </Grid>
+                </StackPanel>
+
+                <!-- Right: List -->
+                <jo:JoGrid Grid.Row="1" Grid.Column="2" Grid.RowSpan="2"
+                           ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUserItem}">
+                    <DataGridTextColumn Header="#" Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Header}" IsReadOnly="True" Width="40"/>
+                    <DataGridTextColumn Binding="{Binding User.Username}" IsReadOnly="True" Width="*">
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="{DynamicResource Lang.Settings.Username}"/>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding User.IsAdmin}" IsReadOnly="True" Width="80">
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="{DynamicResource Lang.Settings.IsAdmin}"/>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding RoleNames}" IsReadOnly="True" Width="*">
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="{DynamicResource Lang.Settings.Roles}"/>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
+                    <DataGridTemplateColumn Width="80">
+                        <DataGridTemplateColumn.Header>
+                            <TextBlock Text="{DynamicResource Lang.Settings.Action}"/>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding DataContext.DeleteUserCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" 
+                                        CommandParameter="{Binding}"
+                                        Content="{DynamicResource Lang.Settings.Delete}"
+                                        Style="{StaticResource DangerButtonStyle}"
+                                        Padding="8,2" FontSize="12" Height="24"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </jo:JoGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,130 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <sys:String x:Key="Lang.Sidebar.Home">Overview</sys:String>
+    <sys:String x:Key="Lang.Sidebar.Logs">System Logs</sys:String>
+    <sys:String x:Key="Lang.Sidebar.Settings">Settings</sys:String>
+    <sys:String x:Key="Lang.Sidebar.Roles">Roles</sys:String>
+    <sys:String x:Key="Lang.Sidebar.Title">Console Management</sys:String>
+    
+    <sys:String x:Key="Lang.Home.ServiceStatus">Status</sys:String>
+    <sys:String x:Key="Lang.Home.ServiceAddress">Address</sys:String>
+    <sys:String x:Key="Lang.Home.WebRoot">Web Root</sys:String>
+    <sys:String x:Key="Lang.Home.Browse">Browse</sys:String>
+    <sys:String x:Key="Lang.Home.Port">Port</sys:String>
+    <sys:String x:Key="Lang.Home.Start">Start Service</sys:String>
+    <sys:String x:Key="Lang.Home.Stop">Stop Service</sys:String>
+    <sys:String x:Key="Lang.Home.Running">Running</sys:String>
+    <sys:String x:Key="Lang.Home.Stopped">Stopped</sys:String>
+    <sys:String x:Key="Lang.Home.Copy">Copy</sys:String>
+    <sys:String x:Key="Lang.Home.Copied">Copied</sys:String>
+
+    <sys:String x:Key="Lang.Logs.Title">Log Query</sys:String>
+    <sys:String x:Key="Lang.Logs.SearchPlaceholder">Keywords...</sys:String>
+    <sys:String x:Key="Lang.Logs.Level">Log Level</sys:String>
+    <sys:String x:Key="Lang.Logs.Source">Log Source</sys:String>
+    <sys:String x:Key="Lang.Logs.SelectDate">Select Date</sys:String>
+    <sys:String x:Key="Lang.Logs.Search">Search</sys:String>
+    <sys:String x:Key="Lang.Logs.Time">Time</sys:String>
+    <sys:String x:Key="Lang.Logs.Content">Content</sys:String>
+
+    <sys:String x:Key="Lang.Settings.General">General</sys:String>
+    <sys:String x:Key="Lang.Settings.Network">Network</sys:String>
+    <sys:String x:Key="Lang.Settings.Security">Security</sys:String>
+    <sys:String x:Key="Lang.Settings.Save">Save Config</sys:String>
+    <sys:String x:Key="Lang.Settings.Language">Language</sys:String>
+    <sys:String x:Key="Lang.Settings.ViewCaching">Disable View Caching</sys:String>
+    <sys:String x:Key="Lang.Settings.RootDirectory">File Root Directory</sys:String>
+    <sys:String x:Key="Lang.Settings.HttpPort">HTTP Port</sys:String>
+    <sys:String x:Key="Lang.Settings.HttpsPort">HTTPS Port</sys:String>
+    <sys:String x:Key="Lang.Settings.EnableHttps">Enable HTTPS</sys:String>
+    <sys:String x:Key="Lang.Settings.Saved">Saved Successfully</sys:String>
+    <sys:String x:Key="Lang.Settings.RestoreDefaults">Restore Defaults</sys:String>
+    
+    <sys:String x:Key="Lang.Config.UnCachedViews">Excluded Views (Check to Disable Cache)</sys:String>
+    <sys:String x:Key="Lang.Settings.ConfigKey">Key</sys:String>
+    <sys:String x:Key="Lang.Settings.Description">Description</sys:String>
+    <sys:String x:Key="Lang.Settings.Value">Value</sys:String>
+    <sys:String x:Key="Lang.Settings.Reload">Reload</sys:String>
+    <sys:String x:Key="Lang.Settings.UserManagement">User Management</sys:String>
+    <sys:String x:Key="Lang.Settings.Username">Username</sys:String>
+    <sys:String x:Key="Lang.Settings.Password">Password</sys:String>
+    <sys:String x:Key="Lang.Settings.AddUser">Add User</sys:String>
+    <sys:String x:Key="Lang.Settings.UpdateUser">Update User</sys:String>
+    <sys:String x:Key="Lang.Settings.Cancel">Cancel</sys:String>
+    <sys:String x:Key="Lang.Settings.Delete">Delete</sys:String>
+    <sys:String x:Key="Lang.Settings.Action">Action</sys:String>
+    <sys:String x:Key="Lang.Settings.Role">Role</sys:String>
+    <sys:String x:Key="Lang.Settings.Roles">Roles</sys:String>
+    <sys:String x:Key="Lang.Settings.RoleManagement">Role Management</sys:String>
+    <sys:String x:Key="Lang.Settings.RoleName">Role Name</sys:String>
+    <sys:String x:Key="Lang.Settings.RoleDescription">Description</sys:String>
+    <sys:String x:Key="Lang.Settings.AddRole">Add Role</sys:String>
+    <sys:String x:Key="Lang.Settings.UpdateRole">Update Role</sys:String>
+
+    <sys:String x:Key="Lang.Msg.RoleNameEmpty">Role name cannot be empty</sys:String>
+    <sys:String x:Key="Lang.Msg.RoleExists">Role already exists</sys:String>
+    <sys:String x:Key="Lang.Msg.RoleCreated">Role created successfully</sys:String>
+    <sys:String x:Key="Lang.Msg.RoleUpdated">Role updated successfully</sys:String>
+    <sys:String x:Key="Lang.Msg.DeleteRoleConfirm">Are you sure you want to delete this role?</sys:String>
+    <sys:String x:Key="Lang.Msg.UserUpdated">User {0} updated successfully</sys:String>
+    <sys:String x:Key="Lang.Settings.IsAdmin">Admin</sys:String>
+    <sys:String x:Key="Lang.Home.Title">File Server</sys:String>
+    <sys:String x:Key="Lang.Home.Subtitle">Manage and browse local file resources</sys:String>
+    <sys:String x:Key="Lang.Home.Up">Up</sys:String>
+    <sys:String x:Key="Lang.Home.Reset">Default Dir</sys:String>
+    <sys:String x:Key="Lang.Home.OpenDir">Open Dir</sys:String>
+    <sys:String x:Key="Lang.Home.Name">Name</sys:String>
+    <sys:String x:Key="Lang.Home.Date">Date Modified</sys:String>
+    <sys:String x:Key="Lang.Home.Type">Type</sys:String>
+    <sys:String x:Key="Lang.Home.Size">Size</sys:String>
+
+    <sys:String x:Key="Lang.Logs.Subtitle">View system logs and error information</sys:String>
+    <sys:String x:Key="Lang.Logs.SearchTooltip">Enter keywords to search logs</sys:String>
+    <sys:String x:Key="Lang.Logs.Query">Query</sys:String>
+    <sys:String x:Key="Lang.Logs.OpenDir">Open Folder</sys:String>
+    <sys:String x:Key="Lang.Logs.OpenDirTooltip">Open log folder</sys:String>
+    <sys:String x:Key="Lang.Logs.Clear">Clear</sys:String>
+    <sys:String x:Key="Lang.Logs.ClearTooltip">Clear all logs</sys:String>
+    
+    <sys:String x:Key="Lang.Logs.FirstPage">First</sys:String>
+    <sys:String x:Key="Lang.Logs.LastPage">Last</sys:String>
+    <sys:String x:Key="Lang.Logs.PrevPage">Prev</sys:String>
+    <sys:String x:Key="Lang.Logs.NextPage">Next</sys:String>
+    <sys:String x:Key="Lang.Logs.JumpTo">Jump to</sys:String>
+    <sys:String x:Key="Lang.Logs.Total">Total</sys:String>
+    
+    <sys:String x:Key="Lang.Msg.LoadFail">Failed to load settings</sys:String>
+    <sys:String x:Key="Lang.Msg.UserPassEmpty">Username and password cannot be empty</sys:String>
+    <sys:String x:Key="Lang.Msg.UserExists">Username already exists</sys:String>
+    <sys:String x:Key="Lang.Msg.UserCreated">User {0} created successfully</sys:String>
+    <sys:String x:Key="Lang.Msg.AddUserFail">Failed to add user</sys:String>
+    <sys:String x:Key="Lang.Msg.EnterNewPass">Please enter new password</sys:String>
+    <sys:String x:Key="Lang.Msg.PassUpdated">User {0} password updated</sys:String>
+    <sys:String x:Key="Lang.Msg.UpdateFail">Update failed</sys:String>
+    <sys:String x:Key="Lang.Msg.DeleteAdminFail">Cannot delete admin user</sys:String>
+    <sys:String x:Key="Lang.Msg.DeleteUserConfirm">Are you sure you want to delete user {0}?</sys:String>
+    <sys:String x:Key="Lang.Msg.DeleteFail">Delete failed</sys:String>
+    <sys:String x:Key="Lang.Msg.SaveFail">Failed to save config</sys:String>
+    <sys:String x:Key="Lang.Msg.SaveSuccess">Configuration saved and applied</sys:String>
+    <sys:String x:Key="Lang.Msg.Confirm">Confirm</sys:String>
+
+    <sys:String x:Key="Lang.Config.Language">Interface Language</sys:String>
+    <sys:String x:Key="Lang.Config.RootDirectory">File Root Directory</sys:String>
+    <sys:String x:Key="Lang.Config.LogDirectory">Log Directory</sys:String>
+    <sys:String x:Key="Lang.Config.MaxUploadSizeGB">Max Upload Size (GB)</sys:String>
+    <sys:String x:Key="Lang.Config.MaxDownloadSizeGB">Max Download Size (GB)</sys:String>
+    <sys:String x:Key="Lang.Config.LogPageSize">Log Page Size</sys:String>
+    <sys:String x:Key="Lang.Config.MinLogLevel">Min Log Level (0=Info, 1=Warn, 2=Error)</sys:String>
+    <sys:String x:Key="Lang.Config.EnableHttps">Enable HTTPS</sys:String>
+    <sys:String x:Key="Lang.Config.HttpPort">HTTP Port</sys:String>
+    <sys:String x:Key="Lang.Config.HttpsPort">HTTPS Port</sys:String>
+    <sys:String x:Key="Lang.Config.BlacklistExtensions">Blacklist Ext (split by |)</sys:String>
+    <sys:String x:Key="Lang.Config.ProtectedApiPaths">Protected API (split by |)</sys:String>
+    <sys:String x:Key="Lang.Config.RunAsService">Run as Service</sys:String>
+    <sys:String x:Key="Lang.Config.RunAsServiceTooltip">Run the application as a Windows service in the background. Changing this requires administrator privileges.</sys:String>
+    <sys:String x:Key="Lang.Config.EnableSwagger">Enable Swagger docs (recommended only for dev/intranet)</sys:String>
+    <sys:String x:Key="Lang.Config.SwaggerIpWhitelist">Swagger IP whitelist (split by ;, supports CIDR/range/wildcard e.g. 10.1.0.1-10.2.0.23, 10.1.*.5)</sys:String>
+
+    <sys:String x:Key="Lang.Title">File Server</sys:String>
+</ResourceDictionary>

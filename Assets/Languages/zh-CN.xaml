@@ -1,0 +1,132 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <sys:String x:Key="Lang.Sidebar.Home">概览首页</sys:String>
+    <sys:String x:Key="Lang.Sidebar.Logs">系统日志</sys:String>
+    <sys:String x:Key="Lang.Sidebar.Settings">参数设置</sys:String>
+    <sys:String x:Key="Lang.Sidebar.Roles">角色管理</sys:String>
+    <sys:String x:Key="Lang.Sidebar.Title">控制台管理</sys:String>
+    
+    <sys:String x:Key="Lang.Home.ServiceStatus">服务状态</sys:String>
+    <sys:String x:Key="Lang.Home.ServiceAddress">服务地址</sys:String>
+    <sys:String x:Key="Lang.Home.WebRoot">Web根目录</sys:String>
+    <sys:String x:Key="Lang.Home.Browse">浏览</sys:String>
+    <sys:String x:Key="Lang.Home.Port">端口</sys:String>
+    <sys:String x:Key="Lang.Home.Start">开启服务</sys:String>
+    <sys:String x:Key="Lang.Home.Stop">停止服务</sys:String>
+    <sys:String x:Key="Lang.Home.Running">运行中</sys:String>
+    <sys:String x:Key="Lang.Home.Stopped">已停止</sys:String>
+    <sys:String x:Key="Lang.Home.Copy">复制</sys:String>
+    <sys:String x:Key="Lang.Home.Copied">已复制</sys:String>
+
+    <sys:String x:Key="Lang.Logs.Title">日志查询</sys:String>
+    <sys:String x:Key="Lang.Logs.SearchPlaceholder">搜索关键词...</sys:String>
+    <sys:String x:Key="Lang.Logs.Level">日志等级</sys:String>
+    <sys:String x:Key="Lang.Logs.Source">日志来源</sys:String>
+    <sys:String x:Key="Lang.Logs.SelectDate">选择日期</sys:String>
+    <sys:String x:Key="Lang.Logs.Search">搜索</sys:String>
+    <sys:String x:Key="Lang.Logs.Time">时间</sys:String>
+    <sys:String x:Key="Lang.Logs.Content">内容</sys:String>
+
+    <sys:String x:Key="Lang.Settings.General">系统运行配置</sys:String>
+    <sys:String x:Key="Lang.Settings.Network">网络设置</sys:String>
+    <sys:String x:Key="Lang.Settings.Security">安全设置</sys:String>
+    <sys:String x:Key="Lang.Settings.Save">保存配置</sys:String>
+    <sys:String x:Key="Lang.Settings.Language">界面语言</sys:String>
+    <sys:String x:Key="Lang.Settings.ViewCaching">禁用视图缓存 (勾选以不缓存)</sys:String>
+    <sys:String x:Key="Lang.Settings.RootDirectory">文件根目录</sys:String>
+    <sys:String x:Key="Lang.Settings.HttpPort">HTTP端口</sys:String>
+    <sys:String x:Key="Lang.Settings.HttpsPort">HTTPS端口</sys:String>
+    <sys:String x:Key="Lang.Settings.EnableHttps">启用HTTPS</sys:String>
+    <sys:String x:Key="Lang.Settings.Saved">保存成功</sys:String>
+    <sys:String x:Key="Lang.Settings.RestoreDefaults">恢复默认</sys:String>
+    
+    <sys:String x:Key="Lang.Config.UnCachedViews">不缓存的视图 (勾选以禁用缓存)</sys:String>
+    <sys:String x:Key="Lang.Settings.ConfigKey">配置项</sys:String>
+    <sys:String x:Key="Lang.Settings.Description">说明</sys:String>
+    <sys:String x:Key="Lang.Settings.Value">数值</sys:String>
+    <sys:String x:Key="Lang.Settings.Reload">刷新</sys:String>
+    <sys:String x:Key="Lang.Settings.UserManagement">用户管理</sys:String>
+    <sys:String x:Key="Lang.Settings.Username">用户名</sys:String>
+    <sys:String x:Key="Lang.Settings.Password">密码</sys:String>
+    <sys:String x:Key="Lang.Settings.AddUser">添加用户</sys:String>
+    <sys:String x:Key="Lang.Settings.UpdateUser">保存修改</sys:String>
+    <sys:String x:Key="Lang.Settings.Cancel">取消</sys:String>
+    <sys:String x:Key="Lang.Settings.Delete">删除</sys:String>
+    <sys:String x:Key="Lang.Settings.Action">操作</sys:String>
+    <sys:String x:Key="Lang.Settings.Role">角色</sys:String>
+    <sys:String x:Key="Lang.Settings.Roles">角色分配</sys:String>
+    <sys:String x:Key="Lang.Settings.IsAdmin">管理员</sys:String>
+    <sys:String x:Key="Lang.Home.Title">文件服务器</sys:String>
+    <sys:String x:Key="Lang.Home.Subtitle">管理与浏览本地文件资源</sys:String>
+    <sys:String x:Key="Lang.Home.Up">返回上一级</sys:String>
+    <sys:String x:Key="Lang.Home.Reset">默认目录</sys:String>
+    <sys:String x:Key="Lang.Home.OpenDir">打开目录</sys:String>
+    <sys:String x:Key="Lang.Home.Name">名称</sys:String>
+    <sys:String x:Key="Lang.Home.Date">修改日期</sys:String>
+    <sys:String x:Key="Lang.Home.Type">类型</sys:String>
+    <sys:String x:Key="Lang.Home.Size">大小</sys:String>
+
+    <sys:String x:Key="Lang.Logs.Subtitle">查看系统运行记录与错误信息</sys:String>
+    <sys:String x:Key="Lang.Logs.SearchTooltip">输入关键词搜索日志内容</sys:String>
+    <sys:String x:Key="Lang.Logs.Query">查询</sys:String>
+    <sys:String x:Key="Lang.Logs.OpenDir">定位目录</sys:String>
+    <sys:String x:Key="Lang.Logs.OpenDirTooltip">打开日志所在文件夹</sys:String>
+    <sys:String x:Key="Lang.Logs.Clear">清空</sys:String>
+    <sys:String x:Key="Lang.Logs.ClearTooltip">清空所有日志</sys:String>
+    
+    <sys:String x:Key="Lang.Logs.FirstPage">首页</sys:String>
+    <sys:String x:Key="Lang.Logs.LastPage">末页</sys:String>
+    <sys:String x:Key="Lang.Logs.PrevPage">上一页</sys:String>
+    <sys:String x:Key="Lang.Logs.NextPage">下一页</sys:String>
+    <sys:String x:Key="Lang.Logs.JumpTo">跳转至</sys:String>
+    <sys:String x:Key="Lang.Logs.Total">总计</sys:String>
+    
+    <sys:String x:Key="Lang.Msg.LoadFail">加载设置失败</sys:String>
+    <sys:String x:Key="Lang.Msg.UserPassEmpty">用户名和密码不能为空</sys:String>
+    <sys:String x:Key="Lang.Msg.UserExists">用户名已存在</sys:String>
+    <sys:String x:Key="Lang.Msg.UserCreated">用户 {0} 创建成功</sys:String>
+    <sys:String x:Key="Lang.Msg.AddUserFail">添加用户失败</sys:String>
+    <sys:String x:Key="Lang.Msg.EnterNewPass">请输入新密码</sys:String>
+    <sys:String x:Key="Lang.Msg.PassUpdated">用户 {0} 密码修改成功</sys:String>
+    <sys:String x:Key="Lang.Msg.UpdateFail">修改失败</sys:String>
+    <sys:String x:Key="Lang.Msg.DeleteAdminFail">无法删除管理员 admin</sys:String>
+    <sys:String x:Key="Lang.Msg.DeleteUserConfirm">确定删除用户 {0}?</sys:String>
+    <sys:String x:Key="Lang.Msg.DeleteFail">删除失败</sys:String>
+    <sys:String x:Key="Lang.Msg.SaveFail">保存配置失败</sys:String>
+    <sys:String x:Key="Lang.Msg.SaveSuccess">配置已保存并生效</sys:String>
+    <sys:String x:Key="Lang.Msg.Confirm">确认</sys:String>
+
+    <sys:String x:Key="Lang.Config.Language">界面语言</sys:String>
+    <sys:String x:Key="Lang.Config.RootDirectory">文件根目录</sys:String>
+    <sys:String x:Key="Lang.Config.LogDirectory">日志存放目录</sys:String>
+    <sys:String x:Key="Lang.Config.MaxUploadSizeGB">最大上传大小(GB)</sys:String>
+    <sys:String x:Key="Lang.Config.MaxDownloadSizeGB">最大下载大小(GB)</sys:String>
+    <sys:String x:Key="Lang.Config.LogPageSize">日志每页条数</sys:String>
+    <sys:String x:Key="Lang.Config.MinLogLevel">最小日志级别 (0=信息, 1=警告, 2=错误)</sys:String>
+    <sys:String x:Key="Lang.Config.EnableHttps">启用HTTPS</sys:String>
+    <sys:String x:Key="Lang.Config.HttpPort">HTTP端口</sys:String>
+    <sys:String x:Key="Lang.Config.HttpsPort">HTTPS端口</sys:String>
+    <sys:String x:Key="Lang.Config.RunAsService">以服务模式运行</sys:String>
+    <sys:String x:Key="Lang.Config.RunAsServiceTooltip">开启后程序将作为Windows服务在后台运行。修改此项需要管理员权限。</sys:String>
+    <sys:String x:Key="Lang.Config.BlacklistExtensions">黑名单后缀(以|分隔)</sys:String>
+    <sys:String x:Key="Lang.Config.ProtectedApiPaths">受保护API(以|分隔)</sys:String>
+    <sys:String x:Key="Lang.Config.EnableSwagger">启用Swagger文档（建议仅开发/内网环境打开）</sys:String>
+    <sys:String x:Key="Lang.Config.SwaggerIpWhitelist">Swagger访问IP白名单(支持;分隔, 支持CIDR/IP区间/通配符，如10.1.0.1-10.2.0.23, 10.1.*.5)</sys:String>
+    
+    <sys:String x:Key="Lang.Title">文件服务器</sys:String>
+    
+    <sys:String x:Key="Lang.Settings.RoleManagement">角色管理</sys:String>
+    <sys:String x:Key="Lang.Settings.RoleName">角色名称</sys:String>
+    <sys:String x:Key="Lang.Settings.RoleDescription">角色描述</sys:String>
+    <sys:String x:Key="Lang.Settings.AddRole">添加角色</sys:String>
+    <sys:String x:Key="Lang.Settings.UpdateRole">更新角色</sys:String>
+    
+    <sys:String x:Key="Lang.Msg.RoleNameEmpty">角色名称不能为空</sys:String>
+    <sys:String x:Key="Lang.Msg.RoleExists">角色已存在</sys:String>
+    <sys:String x:Key="Lang.Msg.RoleCreated">角色创建成功</sys:String>
+    <sys:String x:Key="Lang.Msg.RoleUpdated">角色更新成功</sys:String>
+    <sys:String x:Key="Lang.Msg.DeleteRoleConfirm">确定要删除该角色吗？</sys:String>
+    <sys:String x:Key="Lang.Msg.UserUpdated">用户 {0} 更新成功</sys:String>
+</ResourceDictionary>
+    

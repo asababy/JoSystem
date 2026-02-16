@@ -68,7 +68,7 @@
                 </Expander>
 
                 <jo:JoGrid Grid.Row="2" ItemsSource="{Binding Configs}">
-                    <DataGridTextColumn Header="#" Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Header}" IsReadOnly="True" Width="40"/>
+                        <DataGridTextColumn Header="#" Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Header}" IsReadOnly="True" Width="40"/>
                         <DataGridTextColumn Binding="{Binding Key}" IsReadOnly="True" Width="200">
                             <DataGridTextColumn.Header>
                                 <TextBlock Text="{DynamicResource Lang.Settings.ConfigKey}"/>
@@ -79,7 +79,7 @@
                                 <TextBlock Text="{DynamicResource Lang.Settings.Description}"/>
                             </DataGridTextColumn.Header>
                         </DataGridTextColumn>
-                        
+
                         <DataGridTemplateColumn Width="*">
                             <DataGridTemplateColumn.Header>
                                 <TextBlock Text="{DynamicResource Lang.Settings.Value}"/>

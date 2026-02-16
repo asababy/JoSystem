@@ -6,6 +6,7 @@
     <sys:String x:Key="Lang.Sidebar.Settings">Settings</sys:String>
     <sys:String x:Key="Lang.Sidebar.Roles">Roles</sys:String>
     <sys:String x:Key="Lang.Sidebar.Title">Console Management</sys:String>
+    <sys:String x:Key="Lang.Sidebar.DbConnections">DB Connections</sys:String>
     
     <sys:String x:Key="Lang.Home.ServiceStatus">Status</sys:String>
     <sys:String x:Key="Lang.Home.ServiceAddress">Address</sys:String>
@@ -46,6 +47,7 @@
     <sys:String x:Key="Lang.Settings.Description">Description</sys:String>
     <sys:String x:Key="Lang.Settings.Value">Value</sys:String>
     <sys:String x:Key="Lang.Settings.Reload">Reload</sys:String>
+    <sys:String x:Key="Lang.Settings.Add">Add</sys:String>
     <sys:String x:Key="Lang.Settings.UserManagement">User Management</sys:String>
     <sys:String x:Key="Lang.Settings.Username">Username</sys:String>
     <sys:String x:Key="Lang.Settings.Password">Password</sys:String>
@@ -61,6 +63,18 @@
     <sys:String x:Key="Lang.Settings.RoleDescription">Description</sys:String>
     <sys:String x:Key="Lang.Settings.AddRole">Add Role</sys:String>
     <sys:String x:Key="Lang.Settings.UpdateRole">Update Role</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections">Database Connections</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnectionsSectionTitle">Database Connection Settings</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.Name">Name</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.Provider">Provider</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.ConnectionString">Connection String</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.Enabled">Enabled</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.Order">Order</sys:String>
+    <sys:String x:Key="Lang.Settings.TestConnection">Test Connection</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnectionsHint">Manage cross-system database connections here, such as Oracle and SQL Server. You can also run SELECT SQL below and inspect the JSON result for reporting or integration development.</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.QueryTitle">SQL Query Debug</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.SqlLabel">Enter a SELECT statement below for development/debug only. At most 200 rows will be returned.</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.Execute">Execute Query</sys:String>
 
     <sys:String x:Key="Lang.Msg.RoleNameEmpty">Role name cannot be empty</sys:String>
     <sys:String x:Key="Lang.Msg.RoleExists">Role already exists</sys:String>

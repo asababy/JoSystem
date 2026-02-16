@@ -1,0 +1,15 @@
+Startup Error: “设置属性“System.Windows.ResourceDictionary.DeferrableContent”时引发了异常。”，行号为“3”，行位置为“21”。
+   at System.Windows.Markup.XamlReader.RewrapException(Exception e, IXamlLineInfo lineInfo, Uri baseUri)
+   at System.Windows.Markup.WpfXamlLoader.Load(XamlReader xamlReader, IXamlObjectWriterFactory writerFactory, Boolean skipJournaledProperties, Object rootObject, XamlObjectWriterSettings settings, Uri baseUri)
+   at System.Windows.Markup.WpfXamlLoader.LoadBaml(XamlReader xamlReader, Boolean skipJournaledProperties, Object rootObject, XamlAccessLevel accessLevel, Uri baseUri)
+   at System.Windows.Markup.XamlReader.LoadBaml(Stream stream, ParserContext parserContext, Object parent, Boolean closeStream)
+   at System.Windows.Application.LoadBamlStreamWithSyncInfo(Stream stream, ParserContext pc)
+   at MS.Internal.AppModel.AppModelKnownContentFactory.BamlConverterCore(Stream stream, Uri baseUri, Boolean canUseTopLevelBrowser, Boolean sandboxExternalContent, Boolean allowAsync, Boolean isJournalNavigation, XamlReader& asyncObjectConverter, Boolean isUnsafe)
+   at MS.Internal.AppModel.MimeObjectFactory.GetObjectAndCloseStreamCore(Stream s, ContentType contentType, Uri baseUri, Boolean canUseTopLevelBrowser, Boolean sandboxExternalContent, Boolean allowAsync, Boolean isJournalNavigation, XamlReader& asyncObjectConverter, Boolean isUnsafe)
+   at System.Windows.ResourceDictionary.set_Source(Uri value)
+   at JoSystem.Helpers.LanguageManager.SetLanguage(String cultureCode) in D:\Source\BackEnd\JoSystem\JoSystem\Helpers\LanguageManager.cs:line 13
+   at JoSystem.App.OnStartup(StartupEventArgs e) in D:\Source\BackEnd\JoSystem\JoSystem\App.xaml.cs:line 21
+Inner: Item has already been added. Key in dictionary: 'Lang.Settings.DbConnections'  Key being added: 'Lang.Settings.DbConnections'
+   at System.Collections.Hashtable.Insert(Object key, Object nvalue, Boolean add)
+   at System.Windows.ResourceDictionary.SetKeys(IList`1 keyCollection, IServiceProvider serviceProvider)
+   at MS.Internal.Xaml.Runtime.ClrObjectRuntime.SetValue(Object inst, XamlMember property, Object value)

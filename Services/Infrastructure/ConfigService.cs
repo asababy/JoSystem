@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json.Serialization;
 using JoSystem.Data;
+using JoSystem.Models.Entities;
 using JoSystem.Views;
 using JoSystem.Views.Core;
 
@@ -17,7 +18,8 @@ namespace JoSystem.Services
             { "Logs", typeof(LogView) },
             { "Settings", typeof(SettingsView) },
             { "Users", typeof(UserManagementView) },
-            { "Roles", typeof(RoleManagementView) }
+            { "Roles", typeof(RoleManagementView) },
+            { "DbConnections", typeof(JoSystem.Views.Core.DbConnectionsView) }
         };
 
         public string RootDirectory { get; set; } = @"D:\DLFiles";
@@ -73,6 +75,8 @@ namespace JoSystem.Services
         public int HttpPort { get; set; } = 5000;
 
         public int HttpsPort { get; set; } = 5001;
+
+        public List<DbConnectionConfig> DbConnections { get; set; } = new List<DbConnectionConfig>();
 
         public List<string> UnCachedViews { get; set; } = new List<string>();
 

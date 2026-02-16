@@ -54,10 +54,6 @@
                              Command="{Binding NavigateCommand}" CommandParameter="Home"
                              IsChecked="{Binding ActiveViewName, Converter={StaticResource EqualityToBooleanConverter}, ConverterParameter=Home, Mode=OneWay}"/>
                 
-                <RadioButton Content="{DynamicResource Lang.Sidebar.Logs}" Tag="&#xE9F9;" Style="{StaticResource NavButtonStyle}"
-                             Command="{Binding NavigateCommand}" CommandParameter="Logs"
-                             IsChecked="{Binding ActiveViewName, Converter={StaticResource EqualityToBooleanConverter}, ConverterParameter=Logs, Mode=OneWay}"/>
-                
                 <RadioButton Content="{DynamicResource Lang.Settings.UserManagement}" Tag="&#xE77B;" Style="{StaticResource NavButtonStyle}"
                              Command="{Binding NavigateCommand}" CommandParameter="Users"
                              IsChecked="{Binding ActiveViewName, Converter={StaticResource EqualityToBooleanConverter}, ConverterParameter=Users, Mode=OneWay}"/>
@@ -67,10 +63,18 @@
                              Command="{Binding NavigateCommand}" CommandParameter="Roles"
                              IsChecked="{Binding ActiveViewName, Converter={StaticResource EqualityToBooleanConverter}, ConverterParameter=Roles, Mode=OneWay}"/>
                 -->
-
+                
+                <RadioButton Content="{DynamicResource Lang.Sidebar.DbConnections}" Tag="&#xE1DB;" Style="{StaticResource NavButtonStyle}"
+                             Command="{Binding NavigateCommand}" CommandParameter="DbConnections"
+                             IsChecked="{Binding ActiveViewName, Converter={StaticResource EqualityToBooleanConverter}, ConverterParameter=DbConnections, Mode=OneWay}"/>
+                
                 <RadioButton Content="{DynamicResource Lang.Sidebar.Settings}" Tag="&#xE713;" Style="{StaticResource NavButtonStyle}"
                              Command="{Binding NavigateCommand}" CommandParameter="Settings"
                              IsChecked="{Binding ActiveViewName, Converter={StaticResource EqualityToBooleanConverter}, ConverterParameter=Settings, Mode=OneWay}"/>
+
+                <RadioButton Content="{DynamicResource Lang.Sidebar.Logs}" Tag="&#xE9F9;" Style="{StaticResource NavButtonStyle}"
+                             Command="{Binding NavigateCommand}" CommandParameter="Logs"
+                             IsChecked="{Binding ActiveViewName, Converter={StaticResource EqualityToBooleanConverter}, ConverterParameter=Logs, Mode=OneWay}"/>
             </StackPanel>
 
             <!-- Footer -->

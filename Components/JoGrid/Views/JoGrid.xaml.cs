@@ -46,7 +46,7 @@ namespace JoSystem.Components.JoGrid
         public static readonly DependencyProperty AutoGenerateColumnsProperty =
             DependencyProperty.Register(nameof(AutoGenerateColumns), typeof(bool), typeof(JoGrid), new PropertyMetadata(false));
 
-        public ObservableCollection<DataGridColumn> Columns { get; } = new ObservableCollection<DataGridColumn>();
+        public ObservableCollection<DataGridColumn> Columns { get; } = [];
 
         public bool IsReadOnly
         {

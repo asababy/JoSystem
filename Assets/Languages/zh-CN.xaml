@@ -6,6 +6,7 @@
     <sys:String x:Key="Lang.Sidebar.Settings">参数设置</sys:String>
     <sys:String x:Key="Lang.Sidebar.Roles">角色管理</sys:String>
     <sys:String x:Key="Lang.Sidebar.Title">控制台管理</sys:String>
+    <sys:String x:Key="Lang.Sidebar.DbConnections">数据库连接</sys:String>
     
     <sys:String x:Key="Lang.Home.ServiceStatus">服务状态</sys:String>
     <sys:String x:Key="Lang.Home.ServiceAddress">服务地址</sys:String>
@@ -46,11 +47,12 @@
     <sys:String x:Key="Lang.Settings.Description">说明</sys:String>
     <sys:String x:Key="Lang.Settings.Value">数值</sys:String>
     <sys:String x:Key="Lang.Settings.Reload">刷新</sys:String>
+    <sys:String x:Key="Lang.Settings.Add">新增</sys:String>
     <sys:String x:Key="Lang.Settings.UserManagement">用户管理</sys:String>
     <sys:String x:Key="Lang.Settings.Username">用户名</sys:String>
     <sys:String x:Key="Lang.Settings.Password">密码</sys:String>
     <sys:String x:Key="Lang.Settings.AddUser">添加用户</sys:String>
-    <sys:String x:Key="Lang.Settings.UpdateUser">保存修改</sys:String>
+    <sys:String x:Key="Lang.Settings.UpdateUser">修改密码</sys:String>
     <sys:String x:Key="Lang.Settings.Cancel">取消</sys:String>
     <sys:String x:Key="Lang.Settings.Delete">删除</sys:String>
     <sys:String x:Key="Lang.Settings.Action">操作</sys:String>
@@ -121,6 +123,18 @@
     <sys:String x:Key="Lang.Settings.RoleDescription">角色描述</sys:String>
     <sys:String x:Key="Lang.Settings.AddRole">添加角色</sys:String>
     <sys:String x:Key="Lang.Settings.UpdateRole">更新角色</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections">数据库配置</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnectionsSectionTitle">数据库配置</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.Name">名称</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.Provider">提供程序</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.ConnectionString">连接字符串</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.Enabled">启用</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.Order">顺序</sys:String>
+    <sys:String x:Key="Lang.Settings.TestConnection">测试连接</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnectionsHint">可在此处维护跨系统的数据库连接，例如 Oracle、SQL Server，并在下方试跑 SQL，查看 JSON 结果，用于后续报表或集成开发。</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.QueryTitle">SQL 查询调试</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.SqlLabel">在下方输入 SELECT 语句，仅用于开发调试，最多返回前 200 行。</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.Execute">执行查询</sys:String>
     
     <sys:String x:Key="Lang.Msg.RoleNameEmpty">角色名称不能为空</sys:String>
     <sys:String x:Key="Lang.Msg.RoleExists">角色已存在</sys:String>

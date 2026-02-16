@@ -34,6 +34,16 @@ namespace JoSystem.Services
                             CONSTRAINT FK_UserRoles_Users_UserId FOREIGN KEY (UserId) REFERENCES Users (Id) ON DELETE CASCADE
                         );
                         CREATE INDEX IF NOT EXISTS IX_UserRoles_UserId ON UserRoles (UserId);
+
+                        CREATE TABLE IF NOT EXISTS DbConnectionConfigs (
+                            Id INTEGER NOT NULL CONSTRAINT PK_DbConnectionConfigs PRIMARY KEY AUTOINCREMENT,
+                            Name TEXT NOT NULL,
+                            Provider TEXT NOT NULL,
+                            ConnectionString TEXT NOT NULL,
+                            Enabled INTEGER NOT NULL,
+                            ""Order"" INTEGER NOT NULL
+                        );
+                        CREATE UNIQUE INDEX IF NOT EXISTS IX_DbConnectionConfigs_Name ON DbConnectionConfigs (Name);
                     ");
                 }
                 catch (Exception ex)
@@ -64,6 +74,19 @@ namespace JoSystem.Services
                         new ServerConfig { Key = "EnableSwagger", Value = currentConfig.EnableSwagger.ToString(), Description = "启用Swagger文档（建议仅开发/内网环境打开）" },
                         new ServerConfig { Key = "SwaggerIpWhitelist", Value = currentConfig.SwaggerIpWhitelist, Description = "Swagger访问IP白名单(支持;分隔, 支持CIDR如192.168.0.0/24)" }
                     );
+                    db.SaveChanges();
+                }
+
+                if (!db.DbConnectionConfigs.Any())
+                {
+                    db.DbConnectionConfigs.Add(new DbConnectionConfig
+                    {
+                        Name = "LME",
+                        Provider = "Oracle",
+                        ConnectionString = "User Id=hcaiewms;Password=<PASSWORD>;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.98.9.9)(PORT=1521))(CONNECT_DATA=(SID=hcaiewms)))",
+                        Enabled = true,
+                        Order = 1
+                    });
                     db.SaveChanges();
                 }
             }

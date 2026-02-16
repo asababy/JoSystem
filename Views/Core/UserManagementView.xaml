@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:JoSystem.Views.Core"
              xmlns:vm="clr-namespace:JoSystem.ViewModels.Core"
              xmlns:conv="clr-namespace:JoSystem.Converters"
-             xmlns:jo="clr-namespace:JoSystem.Components.JoGrid"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800"
              Background="{StaticResource BackgroundBrush}"
@@ -58,56 +57,56 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         
-                        <!-- Create Mode Buttons -->
+                        <!-- Always show both buttons: Add user and Change password -->
                         <Button Grid.Column="0" Command="{Binding AddUserCommand}" Content="{DynamicResource Lang.Settings.AddUser}" 
-                                Style="{StaticResource PrimaryButtonStyle}" Height="{StaticResource StandardControlHeight}" Margin="0,0,5,0"
-                                Visibility="{Binding IsEditMode, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+                                Style="{StaticResource PrimaryButtonStyle}" Height="{StaticResource StandardControlHeight}" Margin="0,0,5,0"/>
                         
-                        <!-- Edit Mode Buttons -->
-                        <Button Grid.Column="0" Command="{Binding UpdateUserCommand}" Content="{DynamicResource Lang.Settings.UpdateUser}" 
-                                Style="{StaticResource PrimaryButtonStyle}" Height="{StaticResource StandardControlHeight}" Margin="0,0,5,0"
-                                Visibility="{Binding IsEditMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                                
-                        <Button Grid.Column="1" Command="{Binding CancelEditCommand}" Content="{DynamicResource Lang.Settings.Cancel}" 
-                                Style="{StaticResource SecondaryButtonStyle}" Height="{StaticResource StandardControlHeight}" Margin="5,0,0,0"
-                                Visibility="{Binding IsEditMode, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                        <Button Grid.Column="1" Command="{Binding UpdateUserCommand}" Content="{DynamicResource Lang.Settings.UpdateUser}" 
+                                Style="{StaticResource SecondaryButtonStyle}" Height="{StaticResource StandardControlHeight}" Margin="5,0,0,0"/>
                     </Grid>
                 </StackPanel>
 
                 <!-- Right: List -->
-                <jo:JoGrid Grid.Row="1" Grid.Column="2" Grid.RowSpan="2"
-                           ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUserItem}">
-                    <DataGridTextColumn Header="#" Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Header}" IsReadOnly="True" Width="40"/>
-                    <DataGridTextColumn Binding="{Binding User.Username}" IsReadOnly="True" Width="*">
-                        <DataGridTextColumn.Header>
-                            <TextBlock Text="{DynamicResource Lang.Settings.Username}"/>
-                        </DataGridTextColumn.Header>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding User.IsAdmin}" IsReadOnly="True" Width="80">
-                        <DataGridTextColumn.Header>
-                            <TextBlock Text="{DynamicResource Lang.Settings.IsAdmin}"/>
-                        </DataGridTextColumn.Header>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Binding="{Binding RoleNames}" IsReadOnly="True" Width="*">
-                        <DataGridTextColumn.Header>
-                            <TextBlock Text="{DynamicResource Lang.Settings.Roles}"/>
-                        </DataGridTextColumn.Header>
-                    </DataGridTextColumn>
-                    <DataGridTemplateColumn Width="80">
-                        <DataGridTemplateColumn.Header>
-                            <TextBlock Text="{DynamicResource Lang.Settings.Action}"/>
-                        </DataGridTemplateColumn.Header>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Command="{Binding DataContext.DeleteUserCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" 
-                                        CommandParameter="{Binding}"
-                                        Content="{DynamicResource Lang.Settings.Delete}"
-                                        Style="{StaticResource DangerButtonStyle}"
-                                        Padding="8,2" FontSize="12" Height="24"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </jo:JoGrid>
+                <DataGrid x:Name="UserDataGrid"
+                          Grid.Row="1" Grid.Column="2" Grid.RowSpan="2"
+                          ItemsSource="{Binding Users}"
+                          SelectedItem="{Binding SelectedUserItem, Mode=TwoWay}"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          RowHeight="{StaticResource StandardControlHeight}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="#" Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Header}" Width="40"/>
+                        <DataGridTextColumn Binding="{Binding User.Username}" Width="*">
+                            <DataGridTextColumn.Header>
+                                <TextBlock Text="{DynamicResource Lang.Settings.Username}"/>
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding User.IsAdmin}" Width="80">
+                            <DataGridTextColumn.Header>
+                                <TextBlock Text="{DynamicResource Lang.Settings.IsAdmin}"/>
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding RoleNames}" Width="*">
+                            <DataGridTextColumn.Header>
+                                <TextBlock Text="{DynamicResource Lang.Settings.Roles}"/>
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
+                        <DataGridTemplateColumn Width="80">
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="{DynamicResource Lang.Settings.Action}"/>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Command="{Binding DataContext.DeleteUserCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" 
+                                            CommandParameter="{Binding}"
+                                            Content="{DynamicResource Lang.Settings.Delete}"
+                                            Style="{StaticResource DangerButtonStyle}"
+                                            Padding="8,2" FontSize="12" Height="24"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
         </Border>
     </Grid>

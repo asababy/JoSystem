@@ -271,7 +271,6 @@ namespace JoSystem.ViewModels
                         var dbCfg = db.ServerConfigs.FirstOrDefault(c => c.Key == cfg.Key);
                         if (dbCfg != null)
                         {
-                            // 记录配置项更改日志
                             if (dbCfg.Value != cfg.Value)
                             {
                                 LogService.Write($"配置项 [{cfg.Key}] 更改: {dbCfg.Value} -> {cfg.Value}", level: LogLevel.Warning);

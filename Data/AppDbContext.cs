@@ -11,6 +11,7 @@ namespace JoSystem.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<ServerConfig> ServerConfigs { get; set; }
+        public DbSet<DbConnectionConfig> DbConnectionConfigs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

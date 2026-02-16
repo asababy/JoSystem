@@ -6,6 +6,7 @@
     <sys:String x:Key="Lang.Sidebar.Settings">Pengaturan</sys:String>
     <sys:String x:Key="Lang.Sidebar.Roles">Manajemen Peran</sys:String>
     <sys:String x:Key="Lang.Sidebar.Title">Manajemen Konsol</sys:String>
+    <sys:String x:Key="Lang.Sidebar.DbConnections">Koneksi DB</sys:String>
     
     <sys:String x:Key="Lang.Home.ServiceStatus">Status</sys:String>
     <sys:String x:Key="Lang.Home.ServiceAddress">Alamat</sys:String>
@@ -48,6 +49,7 @@
     <sys:String x:Key="Lang.Settings.Description">Deskripsi</sys:String>
     <sys:String x:Key="Lang.Settings.Value">Nilai</sys:String>
     <sys:String x:Key="Lang.Settings.Reload">Muat Ulang</sys:String>
+    <sys:String x:Key="Lang.Settings.Add">Tambah</sys:String>
     <sys:String x:Key="Lang.Settings.UserManagement">Manajemen Pengguna</sys:String>
     <sys:String x:Key="Lang.Settings.Username">Nama Pengguna</sys:String>
     <sys:String x:Key="Lang.Settings.Password">Kata Sandi</sys:String>
@@ -63,6 +65,18 @@
     <sys:String x:Key="Lang.Settings.RoleDescription">Deskripsi</sys:String>
     <sys:String x:Key="Lang.Settings.AddRole">Tambah Peran</sys:String>
     <sys:String x:Key="Lang.Settings.UpdateRole">Perbarui Peran</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections">Koneksi Basis Data</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnectionsSectionTitle">Pengaturan Koneksi Basis Data</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.Name">Nama</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.Provider">Penyedia</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.ConnectionString">String Koneksi</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.Enabled">Aktif</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.Order">Urutan</sys:String>
+    <sys:String x:Key="Lang.Settings.TestConnection">Uji Koneksi</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnectionsHint">Kelola koneksi basis data lintas sistem di sini, seperti Oracle dan SQL Server. Anda juga dapat menjalankan perintah SELECT di bawah dan melihat hasil JSON untuk laporan atau pengembangan integrasi.</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.QueryTitle">Debug Kueri SQL</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.SqlLabel">Masukkan pernyataan SELECT di bawah ini hanya untuk pengembangan/debug. Maksimal 200 baris akan dikembalikan.</sys:String>
+    <sys:String x:Key="Lang.Settings.DbConnections.Execute">Jalankan Kueri</sys:String>
 
     <sys:String x:Key="Lang.Msg.RoleNameEmpty">Nama peran tidak boleh kosong</sys:String>
     <sys:String x:Key="Lang.Msg.RoleExists">Peran sudah ada</sys:String>

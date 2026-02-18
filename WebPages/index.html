@@ -302,6 +302,61 @@
                     background: var(--status-disconnected);
                     box-shadow: 0 0 5px var(--status-disconnected);
                 }
+
+        .modules-section {
+            margin-top: 18px;
+        }
+
+        .modules-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .module-card {
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            padding: 12px 14px;
+            background: #f9fafb;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+        }
+
+            .module-card:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08);
+                border-color: var(--primary-color);
+                background: #ffffff;
+            }
+
+        .module-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .module-tag {
+            font-size: 11px;
+            padding: 1px 6px;
+            border-radius: 999px;
+            background: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        .module-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
     </style>
 </head>
 <body>
@@ -316,10 +371,12 @@
                 <a href="javascript:void(0)" id="loginLink" style="font-size: 14px; color: #0078d4; text-decoration: none; display: none;">[登录]</a>
             </div>
         </div>
-
-        
-
-        
+        <div class="modules-section">
+            <div class="modules-title">业务功能导航</div>
+            <div id="modulesGrid" class="modules-grid">
+                <!-- 动态填充业务模块卡片 -->
+            </div>
+        </div>
 
         
 
@@ -332,33 +389,22 @@
     
 
 
-    <div class="modal-overlay" id="loginModal">
-        <div class="login-box" style="width: 320px;">
-            <h3>登录验证</h3>
-            <input type="text" id="loginUser" placeholder="账号" style="width:100%; margin:10px 0; padding:8px;">
-            <input type="password" id="loginPass" placeholder="密码" style="width:100%; margin:10px 0; padding:8px;">
-            <div id="loginMsg" style="color:red; font-size:12px; min-height:18px;"></div>
-            <div style="display:flex; justify-content:flex-end; gap:10px;">
-                <button class="btn btn-secondary" id="loginCancel">取消</button>
-                <button class="btn btn-primary" id="loginSubmit">登录</button>
-            </div>
-        </div>
-    </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const state = { socket: null, isLoggedIn: false, isOnline: false };
             const api = {
                 getAuth: () => fetch('/api/auth').then(r => r.json()),
                 login: (body) => fetch('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }).then(r => r.json()),
-                logout: () => fetch('/api/logout', { method: 'POST' })
+                logout: () => fetch('/api/logout', { method: 'POST' }),
+                getModules: () => fetch('/api/modules/nav').then(r => r.json())
             };
             const el = {
                 userInfo: document.getElementById('userInfo'),
                 userName: document.getElementById('userName'),
                 status: document.getElementById('status'),
                 lastUpdated: document.getElementById('lastUpdated'),
-                loginLink: document.getElementById('loginLink')
+                loginLink: document.getElementById('loginLink'),
+                modulesGrid: document.getElementById('modulesGrid')
             };
 
             let offlineTimer = null;
@@ -407,27 +453,37 @@
                 } catch {}
             }
 
-            function showLoginDialog() {
-                return new Promise((resolve, reject) => {
-                    const modal = document.getElementById('loginModal');
-                    modal.style.display = 'flex';
-                    document.getElementById('loginSubmit').onclick = async () => {
-                        const u = document.getElementById('loginUser').value;
-                        const p = document.getElementById('loginPass').value;
-                        const res = await api.login({ Username: u, Password: p });
-                        if (res.success) { await syncLoginStatus(); modal.style.display = 'none'; resolve(); }
-                        else { document.getElementById('loginMsg').textContent = res.message; }
-                    };
-                    document.getElementById('loginCancel').onclick = () => { modal.style.display = 'none'; reject(); };
-                });
-            }
-
             document.getElementById('logoutLink').onclick = async () => { await api.logout(); location.reload(); };
-            if (el.loginLink) el.loginLink.onclick = async () => { try { await showLoginDialog(); } catch {} };
+            if (el.loginLink) el.loginLink.onclick = () => { window.location.href = "/login.html"; };
+
+            async function loadModules() {
+                if (!el.modulesGrid) return;
+                try {
+                    const res = await api.getModules();
+                    if (!res || !res.success || !Array.isArray(res.items)) return;
+                    el.modulesGrid.innerHTML = "";
+                    res.items.forEach(m => {
+                        const card = document.createElement('div');
+                        card.className = 'module-card';
+                        card.onclick = () => {
+                            if (m.url) window.location.href = m.url;
+                        };
+                        card.innerHTML = `
+                            <div class="module-title">
+                                <span>${m.icon || '📦'}</span>
+                                <span>${m.name}</span>
+                                ${m.category ? `<span class="module-tag">${m.category}</span>` : ''}
+                            </div>
+                            <div class="module-desc">${m.description || ''}</div>
+                        `;
+                        el.modulesGrid.appendChild(card);
+                    });
+                } catch { }
+            }
 
             initWS();
             await syncLoginStatus();
-            if (!state.isLoggedIn) { try { await showLoginDialog(); } catch {} }
+            await loadModules();
         });
     </script>
 </body>

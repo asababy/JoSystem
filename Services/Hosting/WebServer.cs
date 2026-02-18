@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using System;
 using System.IO;
 using System.Net;
@@ -73,7 +74,22 @@ namespace JoSystem.Services.Hosting
 
                         webBuilder.ConfigureServices(services =>
                         {
-                            services.AddControllers();
+                            var mvcBuilder = services.AddControllers();
+
+                            var baseDir = AppContext.BaseDirectory;
+                            var qmSystemPath = Path.Combine(baseDir, "QMSystem.dll");
+                            if (File.Exists(qmSystemPath))
+                            {
+                                try
+                                {
+                                    var qmAssembly = Assembly.LoadFrom(qmSystemPath);
+                                    mvcBuilder.PartManager.ApplicationParts.Add(new AssemblyPart(qmAssembly));
+                                }
+                                catch
+                                {
+                                }
+                            }
+
                             services.AddEndpointsApiExplorer();
                             services.AddSwaggerGen(c =>
                             {
@@ -112,7 +128,7 @@ namespace JoSystem.Services.Hosting
                 e.MapControllers();
             });
 
-            app.Run(ServeIndexHtml);
+            app.Run(ServeRequest);
         }
 
         private static void ConfigureSwagger(IApplicationBuilder app)
@@ -260,6 +276,64 @@ namespace JoSystem.Services.Hosting
                 return false;
             }
             catch { return true; }
+        }
+
+        private async Task ServeRequest(HttpContext ctx)
+        {
+            var path = ctx.Request.Path.Value ?? "/";
+
+            if (!string.Equals(path, "/", StringComparison.Ordinal))
+            {
+                if (await TryServeEmbeddedResource(ctx, path))
+                {
+                    return;
+                }
+            }
+
+            await ServeIndexHtml(ctx);
+        }
+
+        private static async Task<bool> TryServeEmbeddedResource(HttpContext ctx, string path)
+        {
+            if (string.IsNullOrWhiteSpace(path)) return false;
+
+            if (path.StartsWith("/")) path = path[1..];
+
+            var resourcePath = path.Replace('/', '.');
+
+            foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                var asmName = asm.GetName().Name;
+                var fullName = $"{asmName}.WebPages.{resourcePath}";
+
+                var stream = asm.GetManifestResourceStream(fullName);
+                if (stream == null) continue;
+
+                ctx.Response.ContentType = GetContentType(path);
+                using (stream)
+                {
+                    await stream.CopyToAsync(ctx.Response.Body);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static string GetContentType(string path)
+        {
+            var ext = Path.GetExtension(path)?.ToLowerInvariant();
+            return ext switch
+            {
+                ".html" or ".htm" => "text/html; charset=utf-8",
+                ".js" => "application/javascript; charset=utf-8",
+                ".css" => "text/css; charset=utf-8",
+                ".json" => "application/json; charset=utf-8",
+                ".png" => "image/png",
+                ".jpg" or ".jpeg" => "image/jpeg",
+                ".gif" => "image/gif",
+                _ => "application/octet-stream"
+            };
         }
 
         private async Task ServeIndexHtml(HttpContext ctx)

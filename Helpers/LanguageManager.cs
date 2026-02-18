@@ -12,7 +12,7 @@ namespace JoSystem.Helpers
         {
             var dict = new ResourceDictionary
             {
-                Source = new Uri($"pack://application:,,,/Assets/Languages/{cultureCode}.xaml")
+                Source = new Uri($"pack://application:,,,/JoSystem;component/Assets/Languages/{cultureCode}.xaml")
             };
 
             // Remove old language dictionaries

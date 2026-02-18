@@ -3,398 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JoSystem</title>
+    <title>JoSystem - 质量管理系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
     <style>
         :root {
-            --primary-color: #0078d4;
-            --primary-hover: #005a9e;
-            --bg-light: #f5f5f5;
-            --bg-white: #ffffff;
-            --border-color: #eee;
-            --text-primary: #333;
-            --text-secondary: #666;
-            --selected-bg: #e3f2fd;
-            --folder-bg: rgba(255, 248, 220, 0.2);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --status-ready: #4caf50;
-            --status-disconnected: #f44336;
+            --primary: #2563eb;
+            --primary-light: #dbeafe;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: var(--bg-light);
-        }
-
-        .container {
-            background-color: var(--bg-white);
-            border-radius: 10px;
-            box-shadow: var(--shadow-md);
-            padding: 20px;
-        }
-
-        .header-container {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.5;
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Header 顶部导航 --- */
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0 1.5rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        .breadcrumb-container {
-            padding: 10px 16px;
-            background-color: #f0f7ff;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .breadcrumb {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 14px;
-        }
-
-        .breadcrumb-item {
-            cursor: pointer;
-            color: var(--primary-color);
-        }
-
-            .breadcrumb-item:hover {
-                text-decoration: underline;
-            }
-
-        .breadcrumb-current {
-            color: var(--text-primary);
-            font-weight: bold;
-        }
-
-        .btn {
-            padding: 8px 14px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: 0.2s;
-        }
-
-            .btn:disabled {
-                opacity: 0.5;
-                cursor: not-allowed;
-                filter: grayscale(0.1);
-            }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .btn-secondary {
-            background-color: ivory;
-            color: var(--text-primary);
-            border: 1px solid #ddd;
-        }
-
-        /* 中止全部按钮样式 */
-        .btn-danger-outline {
-            background-color: #fff;
-            color: #f44336;
-            border: 1px solid #f44336;
-        }
-
-            .btn-danger-outline:hover {
-                background-color: #fff5f5;
-            }
-
-        .btn-qr {
-            background-color: #28a745;
-            color: white;
-        }
-
-        .toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .file-stats {
-            display: flex;
-            gap: 15px;
-            color: var(--text-secondary);
-            font-size: 13px;
-        }
-
-        .file-list {
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-            background: white;
-        }
-
-        .header-row {
-            display: flex;
-            align-items: center;
-            padding: 12px 16px;
-            background-color: #f8f9fa;
-            border-bottom: 1px solid var(--border-color);
-            font-weight: 500;
-        }
-
-        .file-item {
-            display: flex;
-            align-items: center;
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border-color);
-            transition: background 0.2s;
-            cursor: pointer;
-        }
-
-            .file-item:hover {
-                background-color: #f9f9f9;
-            }
-
-            .file-item.selected {
-                background-color: var(--selected-bg) !important;
-            }
-
-            .file-item.folder-item {
-                background-color: var(--folder-bg);
-            }
-
-        .uploading-item {
-            background-color: #fff9db !important;
-            border-bottom: 1px solid #ffe066;
-        }
-
-        .file-checkbox {
-            width: 18px;
-            height: 18px;
-            margin-right: 15px;
-        }
-
-        .file-icon {
-            font-size: 24px;
-            margin-right: 15px;
-            width: 30px;
-            text-align: center;
-        }
-
-        .file-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .file-name {
-            font-weight: 500;
-            color: var(--text-primary);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .file-meta {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-top: 3px;
-        }
-
-        .progress-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .progress-text {
-            font-size: 13px;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-
-        .modal-overlay {
-            position: fixed;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: none;
-            justify-content: center;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
             align-items: center;
-            z-index: 2000;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
         }
 
-        .login-box{
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: var(--shadow-md);
-        }
-        .qr-modal {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            max-width: 90%;
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .status-bar {
-            margin-top: 20px;
+        .btn-login {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+            transition: background 0.3s;
+        }
+
+        .btn-login:hover { background: var(--primary-light); }
+
+        /* --- Main 内容区 --- */
+        main {
+            flex: 1;
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .section-header {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-header h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* 业务模块网格 */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .module-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            border: 1px solid #f1f5f9;
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            border-color: var(--primary);
+        }
+
+        .module-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .module-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .module-info p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .module-tag {
+            align-self: flex-start;
+            background: #f1f5f9;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* --- Footer 底部状态栏 --- */
+        footer {
+            background: #fff;
+            padding: 0.75rem 1.5rem;
+            border-top: 1px solid #e2e8f0;
             display: flex;
             justify-content: space-between;
-            font-size: 12px;
-            color: var(--text-secondary);
+            align-items: center;
         }
 
-        .status {
+        .status-pill {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-weight: bold;
+            gap: 8px;
+            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: #f8fafc;
         }
 
-            .status::before {
-                content: '';
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                display: inline-block;
-            }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #cbd5e1;
+        }
 
-            .status.ready {
-                color: var(--status-ready);
-            }
+        .status-ready .dot { background: var(--success); box-shadow: 0 0 8px var(--success); }
+        .status-disconnected .dot { background: var(--danger); }
 
-                .status.ready::before {
-                    background: var(--status-ready);
-                    box-shadow: 0 0 5px var(--status-ready);
-                }
+        #lastUpdated { font-size: 0.8rem; color: var(--text-muted); }
 
-            .status.disconnected {
-                color: var(--status-disconnected);
-            }
-
-                .status.disconnected::before {
-                    background: var(--status-disconnected);
-                    box-shadow: 0 0 5px var(--status-disconnected);
-                }
+        /* 响应式微调 */
+        @media (max-width: 640px) {
+            .modules-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 1rem; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header-container">
-            <h1>文件服务器</h1>
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <div id="userInfo" style="display: none; font-size: 14px;">
-                    <span id="userName"></span>
-                    <a href="javascript:void(0)" id="logoutLink" style="margin-left: 8px; color: #ff4d4f; text-decoration: none;">[退出]</a>
-                </div>
-                <a href="javascript:void(0)" id="loginLink" style="font-size: 14px; color: #0078d4; text-decoration: none; display: none;">[登录]</a>
+
+    <header>
+        <div class="logo">
+            <i class="fas fa-shield-halved"></i>
+            <span>JoSystem <small style="font-weight: 400; font-size: 0.7rem; opacity: 0.7;">V2.0</small></span>
+        </div>
+        
+        <div class="user-profile">
+            <div id="userInfo" style="display: none; align-items: center; gap: 10px;">
+                <span id="userName" style="font-weight: 500;"></span>
+                <button id="logoutLink" style="background:none; border:none; color:var(--danger); cursor:pointer; font-size: 0.85rem;">[退出]</button>
             </div>
+            <a href="javascript:void(0)" id="loginLink" class="btn-login" style="display: none;">
+                <i class="far fa-user-circle"></i> 登录系统
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="section-header">
+            <h2>业务功能模块</h2>
         </div>
 
-        
-
-        
-
-        
-
-        <div class="status-bar">
-            <div id="status" class="status disconnected">正在初始化...</div>
-            <div id="lastUpdated">最后更新: -</div>
+        <div id="modulesGrid" class="modules-grid">
+            <div style="color: var(--text-muted);">正在加载业务模块...</div>
         </div>
-    </div>
+    </main>
 
-    
-
-
-    <div class="modal-overlay" id="loginModal">
-        <div class="login-box" style="width: 320px;">
-            <h3>登录验证</h3>
-            <input type="text" id="loginUser" placeholder="账号" style="width:100%; margin:10px 0; padding:8px;">
-            <input type="password" id="loginPass" placeholder="密码" style="width:100%; margin:10px 0; padding:8px;">
-            <div id="loginMsg" style="color:red; font-size:12px; min-height:18px;"></div>
-            <div style="display:flex; justify-content:flex-end; gap:10px;">
-                <button class="btn btn-secondary" id="loginCancel">取消</button>
-                <button class="btn btn-primary" id="loginSubmit">登录</button>
-            </div>
+    <footer>
+        <div id="status" class="status-pill status-disconnected">
+            <span class="dot"></span>
+            <span class="status-text">正在初始化...</span>
         </div>
-    </div>
+        <div id="lastUpdated">最后更新: -</div>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const state = { socket: null, isLoggedIn: false, isOnline: false };
             const api = {
                 getAuth: () => fetch('/api/auth').then(r => r.json()),
-                login: (body) => fetch('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }).then(r => r.json()),
-                logout: () => fetch('/api/logout', { method: 'POST' })
+                logout: () => fetch('/api/logout', { method: 'POST' }),
+                getModules: () => fetch('/api/modules/nav').then(r => r.json())
             };
+
             const el = {
                 userInfo: document.getElementById('userInfo'),
                 userName: document.getElementById('userName'),
                 status: document.getElementById('status'),
+                statusText: document.querySelector('.status-text'),
                 lastUpdated: document.getElementById('lastUpdated'),
-                loginLink: document.getElementById('loginLink')
+                loginLink: document.getElementById('loginLink'),
+                modulesGrid: document.getElementById('modulesGrid')
             };
 
-            let offlineTimer = null;
             function setStatus(online, text = "") {
-                if (online) {
-                    if (offlineTimer) clearTimeout(offlineTimer);
-                    offlineTimer = null;
-                    state.isOnline = true;
-                    el.status.textContent = text || "服务器就绪";
-                    el.status.className = "status ready";
-                } else {
-                    if (offlineTimer || !state.isOnline) return;
-                    offlineTimer = setTimeout(() => {
-                        state.isOnline = false;
-                        el.status.textContent = "连接断开 (服务停止)";
-                        el.status.className = "status disconnected";
-                        offlineTimer = null;
-                    }, 1500);
-                }
+                state.isOnline = online;
+                el.status.className = `status-pill ${online ? 'status-ready' : 'status-disconnected'}`;
+                el.statusText.textContent = text || (online ? "服务器已就绪" : "连接已断开");
             }
 
             function initWS() {
                 if (state.socket && state.socket.readyState !== WebSocket.CLOSED) return;
-                const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-                const wsUri = `${wsProtocol}//${window.location.host}/ws`;
+                const wsUri = `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}/ws`;
                 state.socket = new WebSocket(wsUri);
+                
                 state.socket.onopen = () => setStatus(true);
                 state.socket.onmessage = (event) => {
                     try {
                         const msg = JSON.parse(event.data);
                         if (msg.type === "serverStatus") setStatus(msg.data.running);
-                        else if (msg.type === "heartbeat") { el.lastUpdated.textContent = `最后更新: ${msg.time}`; setStatus(true); }
-                    } catch {}
+                        else if (msg.type === "heartbeat") {
+                            el.lastUpdated.textContent = `最后同步: ${msg.time}`;
+                            setStatus(true);
+                        }
+                    } catch (e) {}
                 };
-                state.socket.onclose = () => { setStatus(false); state.socket = null; setTimeout(initWS, 3000); };
-                state.socket.onerror = () => setStatus(false);
+                state.socket.onclose = () => { setStatus(false); setTimeout(initWS, 3000); };
             }
 
             async function syncLoginStatus() {
@@ -402,32 +281,41 @@
                     const data = await api.getAuth();
                     state.isLoggedIn = !!data.authenticated;
                     el.userInfo.style.display = state.isLoggedIn ? 'flex' : 'none';
-                    el.loginLink.style.display = state.isLoggedIn ? 'none' : 'inline';
+                    el.loginLink.style.display = state.isLoggedIn ? 'none' : 'flex';
                     if (state.isLoggedIn) el.userName.textContent = data.username || "管理员";
-                } catch {}
+                } catch (e) {}
             }
 
-            function showLoginDialog() {
-                return new Promise((resolve, reject) => {
-                    const modal = document.getElementById('loginModal');
-                    modal.style.display = 'flex';
-                    document.getElementById('loginSubmit').onclick = async () => {
-                        const u = document.getElementById('loginUser').value;
-                        const p = document.getElementById('loginPass').value;
-                        const res = await api.login({ Username: u, Password: p });
-                        if (res.success) { await syncLoginStatus(); modal.style.display = 'none'; resolve(); }
-                        else { document.getElementById('loginMsg').textContent = res.message; }
-                    };
-                    document.getElementById('loginCancel').onclick = () => { modal.style.display = 'none'; reject(); };
-                });
+            async function loadModules() {
+                try {
+                    const res = await api.getModules();
+                    if (!res?.success) return;
+                    el.modulesGrid.innerHTML = "";
+                    res.items.forEach(m => {
+                        const card = document.createElement('div');
+                        card.className = 'module-card';
+                        card.onclick = () => m.url && (window.location.href = m.url);
+                        card.innerHTML = `
+                            <div class="module-icon">${m.icon || '<i class="fas fa-box"></i>'}</div>
+                            <div class="module-info">
+                                <h3>${m.name}</h3>
+                                <p>${m.description || '点击进入该管理模块'}</p>
+                            </div>
+                            ${m.category ? `<span class="module-tag">${m.category}</span>` : ''}
+                        `;
+                        el.modulesGrid.appendChild(card);
+                    });
+                } catch (e) {
+                    el.modulesGrid.innerHTML = `<div style="color:var(--danger)">无法加载模块列表</div>`;
+                }
             }
 
             document.getElementById('logoutLink').onclick = async () => { await api.logout(); location.reload(); };
-            if (el.loginLink) el.loginLink.onclick = async () => { try { await showLoginDialog(); } catch {} };
+            el.loginLink.onclick = () => { window.location.href = "/login.html"; };
 
             initWS();
             await syncLoginStatus();
-            if (!state.isLoggedIn) { try { await showLoginDialog(); } catch {} }
+            await loadModules();
         });
     </script>
 </body>

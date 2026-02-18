@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - JoSystem 文件服务器</title>
+    <style>
+        :root {
+            --primary-color: #0f766e;
+            --primary-hover: #115e59;
+            --bg: #0f172a;
+            --card-bg: #ffffff;
+            --muted: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #000 100%);
+            color: #e2e8f0;
+        }
+
+        .shell {
+            display: flex;
+            width: min(900px, 100%);
+            margin: 24px;
+            border-radius: 24px;
+            overflow: hidden;
+            background: rgba(15, 23, 42, 0.85);
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.65);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+        }
+
+        .hero {
+            flex: 1.1;
+            padding: 32px 28px;
+            background: radial-gradient(circle at top left, #22c55e1a, transparent 55%),
+                        radial-gradient(circle at bottom left, #0ea5e91f, transparent 55%);
+            border-right: 1px solid rgba(148, 163, 184, 0.25);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.6);
+            font-size: 11px;
+            color: #a5b4fc;
+            border: 1px solid rgba(129, 140, 248, 0.4);
+            margin-bottom: 18px;
+        }
+
+        .hero-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hero-subtitle {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .hero-list {
+            list-style: none;
+            font-size: 13px;
+            color: #cbd5f5;
+            margin-bottom: 22px;
+        }
+
+        .hero-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .hero-list li span {
+            font-size: 18px;
+        }
+
+        .hero-footer {
+            font-size: 11px;
+            color: #9ca3af;
+        }
+
+        .form-panel {
+            flex: 1;
+            padding: 32px 28px;
+            background: var(--card-bg);
+            color: #0f172a;
+        }
+
+        .form-header {
+            margin-bottom: 18px;
+        }
+
+        .form-header h2 {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .form-header p {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .field {
+            margin-bottom: 14px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 4px;
+            color: #4b5563;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .field input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.25);
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 4px;
+            margin-bottom: 8px;
+        }
+
+        .hint {
+            font-size: 11px;
+            color: #6b7280;
+        }
+
+        .btn-primary {
+            padding: 8px 16px;
+            border-radius: 999px;
+            border: none;
+            background: linear-gradient(120deg, var(--primary-color), #22c55e);
+            color: white;
+            font-size: 13px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 10px 24px rgba(16, 185, 129, 0.35);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: default;
+            box-shadow: none;
+        }
+
+        .btn-link {
+            border: none;
+            background: transparent;
+            color: #4b5563;
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .error {
+            min-height: 18px;
+            font-size: 12px;
+            color: #b91c1c;
+            margin-top: 4px;
+        }
+
+        .success {
+            color: #15803d;
+        }
+
+        .back-home {
+            margin-top: 14px;
+            font-size: 12px;
+        }
+
+        .back-home a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .back-home a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="shell">
+        <div class="hero">
+            <div class="hero-badge">
+                <span>●</span>
+                <span>JoSystem 文件服务器 · 控制台登录</span>
+            </div>
+            <div class="hero-title">集中管理 · 多系统共用的底座</div>
+            <div class="hero-subtitle">
+                登录后可以统一配置 Web 服务、数据库连接、日志与参数，为 WMS / QMSystem 等业务系统提供基础能力。
+            </div>
+            <ul class="hero-list">
+                <li><span>🗂</span><div>统一文件访问入口，方便业务系统直接复用</div></li>
+                <li><span>🧩</span><div>支持业务模块导航，比如质量报表、接口调试页面</div></li>
+                <li><span>🔐</span><div>通过账号密码控制敏感配置与 API</div></li>
+            </ul>
+            <div class="hero-footer">
+                提示：初始账号密码可在 JoSystem 客户端中维护。建议只在内网环境开放访问。
+            </div>
+        </div>
+
+        <div class="form-panel">
+            <div class="form-header">
+                <h2>登录 JoSystem 控制台</h2>
+                <p>使用已有的后台账号登录，如 admin。</p>
+            </div>
+            <div class="field">
+                <label for="loginUser">账号</label>
+                <input id="loginUser" type="text" autocomplete="username" placeholder="请输入账号">
+            </div>
+            <div class="field">
+                <label for="loginPass">密码</label>
+                <input id="loginPass" type="password" autocomplete="current-password" placeholder="请输入密码">
+            </div>
+
+            <div class="actions">
+                <div class="hint">登录后可返回首页，从导航进入质量报表等业务页面。</div>
+                <button id="loginBtn" class="btn-primary">
+                    <span>登录</span>
+                    <span>→</span>
+                </button>
+            </div>
+
+            <div id="msg" class="error"></div>
+
+            <div class="back-home">
+                <a href="/">← 返回首页</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const api = {
+            getAuth: () => fetch('/api/auth').then(r => r.json()),
+            login: (body) => fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            }).then(r => r.json())
+        };
+
+        async function init() {
+            const msgEl = document.getElementById('msg');
+            const btn = document.getElementById('loginBtn');
+            const userInput = document.getElementById('loginUser');
+            const passInput = document.getElementById('loginPass');
+
+            try {
+                const auth = await api.getAuth();
+                if (auth && auth.authenticated) {
+                    msgEl.textContent = `已登录：${auth.username || '管理员'}`;
+                    msgEl.classList.add('success');
+                }
+            } catch { }
+
+            async function doLogin() {
+                msgEl.textContent = '';
+                msgEl.classList.remove('success');
+                const u = userInput.value.trim();
+                const p = passInput.value;
+                if (!u || !p) {
+                    msgEl.textContent = '账号和密码不能为空';
+                    return;
+                }
+                btn.disabled = true;
+                try {
+                    const res = await api.login({ Username: u, Password: p });
+                    if (res.success) {
+                        msgEl.textContent = '登录成功，正在跳转...';
+                        msgEl.classList.add('success');
+                        setTimeout(() => {
+                            window.location.href = "/";
+                        }, 600);
+                    } else {
+                        msgEl.textContent = res.message || '登录失败';
+                    }
+                } catch (e) {
+                    msgEl.textContent = e && e.message ? e.message : '请求异常';
+                } finally {
+                    btn.disabled = false;
+                }
+            }
+
+            btn.addEventListener('click', doLogin);
+            passInput.addEventListener('keydown', e => {
+                if (e.key === 'Enter') {
+                    doLogin();
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

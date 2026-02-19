@@ -280,7 +280,8 @@ namespace JoSystem.Services.Hosting
 
         private async Task ServeRequest(HttpContext ctx)
         {
-            var path = ctx.Request.Path.Value ?? "/";
+            var path = ctx.Request.Path.Value;
+            if (path == null) path = "/";
 
             if (!string.Equals(path, "/", StringComparison.Ordinal))
             {

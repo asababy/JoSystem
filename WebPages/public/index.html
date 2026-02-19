@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JoSystem V2.0 - 管理系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent: #10b981;
+            --border: #334155;
+            --card-bg: rgba(30, 41, 59, 0.8);
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, #1a1f3a 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .module-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .module-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+        }
+
+        .module-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .module-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .module-category {
+            background: var(--glass);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 4rem;
+            color: var(--text-secondary);
+        }
+
+        .error {
+            text-align: center;
+            padding: 4rem;
+            color: #ef4444;
+        }
+
+        .status {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            background: #ef4444;
+        }
+
+        .status.online .status-dot {
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-shield-halved"></i>
+                <span>JoSystem</span>
+            </div>
+            <div class="subtitle">集中管理 · 多系统共用的底座</div>
+        </header>
+
+        <main>
+            <div id="modules-container" class="modules-grid">
+                <div class="loading">
+                    <i class="fas fa-circle-notch fa-spin"></i>
+                    正在加载模块...
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="status" class="status">
+        <span class="status-dot"></span>
+        <span class="status-text">连接中...</span>
+    </div>
+
+    <script>
+        // API 调用
+        async function fetchModules() {
+            try {
+                const response = await fetch('/api/modules/nav');
+                const data = await response.json();
+                
+                if (data.success && data.items) {
+                    renderModules(data.items);
+                    updateStatus(true);
+                } else {
+                    throw new Error(data.message || '获取模块失败');
+                }
+            } catch (error) {
+                console.error('Failed to fetch modules:', error);
+                renderError(error.message);
+                updateStatus(false);
+            }
+        }
+
+        // 渲染模块
+        function renderModules(modules) {
+            const container = document.getElementById('modules-container');
+            
+            container.innerHTML = modules.map(module => `
+                <div class="module-card" onclick="navigateToModule('${module.url}')">
+                    <div class="module-icon">${module.icon}</div>
+                    <div class="module-title">${module.name}</div>
+                    <div class="module-description">${module.description}</div>
+                    <div class="module-meta">
+                        <span class="module-category">${module.category}</span>
+                        <span><i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 渲染错误
+        function renderError(message) {
+            const container = document.getElementById('modules-container');
+            container.innerHTML = `
+                <div class="error">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>加载失败: ${message}</p>
+                    <button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: var(--accent); border: none; border-radius: 8px; color: white; cursor: pointer;">
+                        重新加载
+                    </button>
+                </div>
+            `;
+        }
+
+        // 导航到模块
+        function navigateToModule(url) {
+            console.log('Navigating to:', url);
+            window.location.href = url;
+        }
+
+        // 更新状态
+        function updateStatus(online) {
+            const status = document.getElementById('status');
+            const statusText = status.querySelector('.status-text');
+            
+            if (online) {
+                status.classList.add('online');
+                statusText.textContent = '服务器在线';
+            } else {
+                status.classList.remove('online');
+                statusText.textContent = '连接断开';
+            }
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', fetchModules);
+    </script>
+</body>
+</html>

@@ -52,4 +52,9 @@
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
+	<!-- 自动构建 Vue 前端 -->
+	<Target Name="BuildVue" BeforeTargets="Build">
+		<Exec Command="npm run build" WorkingDirectory="../src-ui" ContinueOnError="true" />
+	</Target>
+
 </Project>
